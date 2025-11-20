@@ -32,9 +32,9 @@ function obtenerNombreSeleccionado(nombre, codigo) {
     .map(option => option.value)
     .filter(value => value !== '');
   const amigos = deterministicSeededPairs(familia, 23124124411233)
-  for (const key in amigos) {
-    console.log(key, amigos[key]);
-  }
+  // for (const key in amigos) {
+  //   console.log(key, amigos[key]);
+  // }
 
   // Check codigo
   const hashed_string = fnv1a(nombre)
@@ -65,3 +65,4 @@ document.getElementById('showBtn').addEventListener('click', () => {
   }
   alert(`Hola ${nombre}, tu amigo invisible es: ${resultado}.`);
 });
+
