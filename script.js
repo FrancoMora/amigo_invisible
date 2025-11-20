@@ -1,11 +1,9 @@
 // Deterministic hash with seed
-function seededHash(str, seed) {
-  let h = seed;
-  for (let i = 0; i < str.length; i++) {
-    h = (h << 5) - h + str.charCodeAt(i);
-    h |= 0; // 32-bit integer
-  }
-  return Math.abs(h);
+function seededHash(nombre, seed) {
+  const h = fnv1a(nombre)
+  const random = Math.sin(h + seed) * 10000;
+  return Math.abs(Math.floor(random));
+
 }
 
 function deterministicSeededPairs(arr, seed) {
@@ -15,7 +13,7 @@ function deterministicSeededPairs(arr, seed) {
 
   // Sort using the seeded hash
   const sorted = [...arr].sort(
-    (a, b) => seededHash(String(a), seed) - seededHash(String(b), seed)
+    (a, b) => seededHash(a, seed) - seededHash(b, seed)
   );
 
   // Build mapping: value → next value in cycle
@@ -33,11 +31,13 @@ function obtenerNombreSeleccionado(nombre, codigo) {
   const familia = Array.from(selectElement.options)
     .map(option => option.value)
     .filter(value => value !== '');
-  const amigos = deterministicSeededPairs(familia, 42)
+  const amigos = deterministicSeededPairs(familia, 23124124411233)
+  for (const key in amigos) {
+    console.log(key, amigos[key]);
+  }
 
   // Check codigo
   const hashed_string = fnv1a(nombre)
-  console.log(nombre);
   return hashed_string === parseInt(codigo) ? amigos[nombre] : null;
 }
 
