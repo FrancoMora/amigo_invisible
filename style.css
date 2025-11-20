@@ -1,0 +1,7 @@
+body {font-family: Arial, sans-serif; margin: 2rem; background:#f7f9fa;}
+h1 {color:#333;}
+.container {margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem; max-width:300px;}
+input {padding:0.5rem; border:1px solid #ccc; border-radius:4px;}
+select {padding:0.5rem; border:1px solid #ccc; border-radius:4px; background:#fff;}
+button {padding:0.5rem 0.75rem; border:1px solid #1d6fd7; background:#1d6fd7; color:#fff; border-radius:4px; cursor:pointer;}
+button:hover {background:#15529d;}
